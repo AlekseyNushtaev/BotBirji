@@ -7,6 +7,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver import Chrome
 
 from bot import bot
+from words import words
 
 kworks_links = {
     'https://kwork.ru/projects?c=28': 'Дизайн | Арт и иллюстрации',
@@ -65,6 +66,7 @@ async def parser_kwork(browser, res_old):
     result = []
     for link_cat in kworks_links.keys():
         browser.get(link_cat)
+        print(kworks_links[link_cat])
         time.sleep(1)
         time.sleep(0.25)
         html = browser.page_source
@@ -95,7 +97,7 @@ async def parser_kwork(browser, res_old):
                     min_price = 0
                 category = kworks_links[link_cat].split(' | ')[0]
                 podcategory = kworks_links[link_cat].split(' | ')[1]
-                for word in [' бот', 'бот ', 'телеграм', 'парс', ' тг']:
+                for word in words:
                     if category in ['Разработка и IT', 'SEO и трафик']:
                         if word in text or word in title:
                             await bot.send_message(1012882762, f"{category}\n\n{title}\n\n{text}\n\n{link}")

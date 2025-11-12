@@ -3,11 +3,12 @@ import time
 import bs4
 
 from bot import bot
+from words import words
 
 
 async def parser_fl(browser, res_old):
     browser.get('https://www.fl.ru/projects/')
-    time.sleep(0.5)
+    time.sleep(2.5)
     time.sleep(0.25)
     html = browser.page_source
     soup = bs4.BeautifulSoup(html, 'lxml')
@@ -69,7 +70,7 @@ async def parser_fl(browser, res_old):
                 podcategory = soup.find_all(attrs={"data-id": 'category-spec'})[1].text.strip()
             except Exception:
                 podcategory = ''
-            for word in [' бот', 'бот ', 'телеграм', 'парс', ' тг']:
+            for word in words:
                 if word in text or word in title:
                     await bot.send_message(1012882762, f"{category}\n\n{title}\n\n{text}\n\n{link}")
                     break
