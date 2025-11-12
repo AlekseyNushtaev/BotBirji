@@ -30,12 +30,12 @@ async def main():
         await del_old_orders()
         res_old = await res_old_links()
         print(len(res_old))
-        try:
-            result_fl = await parser_fl(browser, res_old)
-            await add_orders_to_db(result_fl, 'fl', flag)
-        except Exception as e:
-            print(e)
-            time.sleep(30)
+        # try:
+        #     result_fl = await parser_fl(browser, res_old)
+        #     await add_orders_to_db(result_fl, 'fl', flag)
+        # except Exception as e:
+        #     print(e)
+        #     time.sleep(30)
         try:
             result_kwork = await parser_kwork(browser, res_old)
             await add_orders_to_db(result_kwork, 'kwork', flag)

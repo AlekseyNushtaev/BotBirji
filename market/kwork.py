@@ -80,11 +80,11 @@ async def parser_kwork(browser, res_old):
                 except Exception:
                     title = ''
                 try:
-                    text = soup.find(attrs={"class": 'breakwords first-letter overflow-hidden'}).text.strip()
+                    text = card.find(attrs={"class": 'breakwords first-letter overflow-hidden'}).text.strip()
                 except Exception:
                     text = ''
                 try:
-                    price = soup.find(attrs={"class": 'wants-card__right'}).text.strip()
+                    price = card.find(attrs={"class": 'wants-card__right'}).text.strip()
                 except Exception:
                     price = ''
                 min_price = ''
