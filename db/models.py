@@ -1,4 +1,4 @@
-from sqlalchemy import BigInteger
+from sqlalchemy import BigInteger, Integer
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncAttrs
 from sqlalchemy.orm import DeclarativeBase, mapped_column, Mapped
 import atexit
@@ -18,7 +18,7 @@ class Base(DeclarativeBase, AsyncAttrs):
 
 class Order(Base):
     __tablename__ = 'order'
-    id: Mapped[int] = mapped_column(BigInteger, primary_key=True)
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
     market: Mapped[str] = mapped_column(nullable=True)
     title: Mapped[str] = mapped_column(nullable=True)
     link: Mapped[str] = mapped_column(nullable=True)
