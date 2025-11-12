@@ -18,8 +18,8 @@ async def main():
     chrome_driver_path = ChromeDriverManager().install()
     browser_service = Service(executable_path=chrome_driver_path)
     options = Options()
-    # options.add_argument('--headless')
-    # options.add_argument('--no-sandbox')
+    options.add_argument('--headless')
+    options.add_argument('--no-sandbox')
     options.add_argument("window-size=1400,600")
     options.add_argument('--disable-dev-shm-usage')
     options.page_load_strategy = 'eager'
