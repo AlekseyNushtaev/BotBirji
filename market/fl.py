@@ -71,7 +71,7 @@ async def parser_fl(browser, res_old):
             except Exception:
                 podcategory = ''
             for word in words:
-                if word in text or word in title:
+                if word in text.lower() or word in title.lower():
                     await bot.send_message(1012882762, f"{category}\n\n{title}\n\n{text}\n\n{link}")
                     break
             result.append([title, link, category, podcategory, text, price])
